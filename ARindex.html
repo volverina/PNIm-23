@@ -1,13 +1,36 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<meta charset="utf-8">
 		<script src="aframe/aframe.min.js"></script>
+		<script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
 	<head>
 	<body>
-		<a-scene>
-			<a-torus position="-2 1 -5" color="green" radius="1.2"></a-torus>
-			<a-plane width="7" height="7" rotation="50 0 0" position="3 -2 -3" color="purple"></a-plane>
-			<a-sky color="grey"></a-sky>
+		<a-scene embedded arjs>
+			<a-assets>
+				<a-asset-item id="grogu" src="mandalorian_-_grogu__the_force.glb"></a-asset-item>
+			</a-assets>
+			<a-marker preset="hiro">
+				<a-entity scale="0.5 0.5 0.5" rotation="-90 0 0">
+					<a-torus position="-2 1 -5" color="green" radius="1.2"
+					animation="property: components.material.material.color; type: color; from: green; to: red; loop: true; dur: 10000">
+					</a-torus>
+					<a-plane width="7" height="7" rotation="-55 0 0" position="-2 -2 -5" color="white"
+					src="https://raw.githubusercontent.com/aframevr/sample-assets/master/assets/images/illustration/758px-Canestra_di_frutta_(Caravaggio).jpg"
+					></a-plane>
+					<a-cylinder color="yellow" height="2" radius="0.05" position="-2 -1 -5"></a-cylinder>
+					<a-cylinder color="blue"   height="2" radius="0.05" position="-3 -1 -5"></a-cylinder>
+					<a-torus-knot color="orange" radius="1.2" position="-3 1 -5"
+					animation="property:rotation; to: 0 0 360; loop:true; dur:10000"
+					></a-torus-knot>
+					<a-plane width="9" height="2" position="3 1 -9"></a-plane>
+					<a-text value="Вітаннячко! Welcome to browser’s VR!" color="black" font="custom-msdf.json" negate="false"
+							   width="10" position="-0.5 1 -6"></a-text>
+					<a-gltf-model src="#grogu" scale="10 10 10" rotation="15 0 0" position="2 -1 -5"></a-gltf-model>
+				</a-entity>
+			 </a-marker>
+			 <a-entity camera></a-entity>
+			<!--<a-sky color="grey"></a-sky>-->
 		</a-scene>
 	<body>
 </html>
